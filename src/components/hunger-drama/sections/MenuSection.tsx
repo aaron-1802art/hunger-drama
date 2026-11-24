@@ -52,35 +52,35 @@ export const MenuSection: React.FC = () => {
           </p>
         </div>
 
-        {/* Filter & Search Bar Container */}
+        {/* Filter & Dietary Bar Container */}
         <div className="bg-white border-2 border-[#292525] rounded-3xl p-4 sm:p-6 mb-8 sm:mb-10 shadow-sm">
-          {/* Top Row: Search Input & Dietary Toggles */}
-          <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-5 sm:mb-6 pb-5 sm:pb-6 border-b border-[#292525]/10">
-            {/* Search Input */}
-            <div className="relative flex-1">
-              <Search
-                size={18}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-[#292525]/50 pointer-events-none"
-              />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search fries, maggi, paneer, shakes, pancakes..."
-                className="w-full pl-11 pr-10 py-2.5 sm:py-3 bg-[#FFF1E1]/60 border border-[#292525]/20 rounded-2xl text-sm font-body text-[#292525] placeholder:text-[#292525]/45 focus:outline-none focus:ring-2 focus:ring-[#FF382E] focus:border-transparent transition-all"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery('')}
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#292525]/50 hover:text-[#292525]"
-                >
-                  <X size={16} />
-                </button>
+          {/* Top Row: Search Status & Dietary Toggles */}
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 mb-5 sm:mb-6 pb-5 sm:pb-6 border-b border-[#292525]/10">
+            {/* Active Search / Item Count Status */}
+            <div className="flex items-center gap-2 flex-wrap">
+              {searchQuery ? (
+                <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#FF382E]/10 border border-[#FF382E]/30 text-xs font-mono font-bold text-[#FF382E]">
+                  <Search size={14} />
+                  <span>Searching for: &quot;{searchQuery}&quot;</span>
+                  <button
+                    onClick={() => setSearchQuery('')}
+                    aria-label="Clear search"
+                    className="ml-1 p-0.5 rounded-full hover:bg-[#FF382E]/20 text-[#292525]"
+                  >
+                    <X size={12} />
+                  </button>
+                </div>
+              ) : (
+                <div className="flex items-center gap-2 text-xs font-mono text-[#292525]/70">
+                  <Flame size={14} className="text-[#FF382E]" />
+                  <span className="font-bold text-[#292525]">{filteredItems.length} Dishes</span>
+                  <span>ready to sizzle</span>
+                </div>
               )}
             </div>
 
             {/* Dietary Toggle Pills */}
-            <div className="flex items-center gap-1.5 sm:gap-2 self-start md:self-auto overflow-x-auto pb-1 md:pb-0 no-scrollbar max-w-full">
+            <div className="flex items-center gap-1.5 sm:gap-2 self-start sm:self-auto overflow-x-auto pb-1 sm:pb-0 no-scrollbar max-w-full">
               <span className="text-xs font-mono font-bold text-[#292525]/60 uppercase mr-1 hidden sm:inline">
                 Dietary:
               </span>

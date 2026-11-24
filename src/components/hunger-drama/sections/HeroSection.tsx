@@ -5,6 +5,7 @@ import { BRAND_CONFIG } from '@/data/hungerDramaData'
 import { useHungerDrama } from '@/context/HungerDramaContext'
 import { useSound } from '@/context/SoundContext'
 import { startSizzle } from '@/hooks/useSoundEngine'
+import { HeroSearchBar } from '@/components/hunger-drama/sections/HeroSearchBar'
 
 export const HeroSection: React.FC = () => {
   const { items, setActiveItem } = useHungerDrama()
@@ -136,6 +137,11 @@ export const HeroSection: React.FC = () => {
                 <span>Direct Ordering</span>
               </div>
             </motion.div>
+
+            {/* Mobile-Only Search Bar — Placed immediately after the opening hero fold so mobile visitors can search instantly without scrolling past the food visual */}
+            <div className="lg:hidden mt-8">
+              <HeroSearchBar />
+            </div>
           </div>
 
           {/* Right Column: Visual Centerpiece & Mascot Accent (5 cols) */}

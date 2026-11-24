@@ -59,8 +59,10 @@ export const HungerDramaHome: React.FC = () => {
           {/* Section 01: The Opening Experience */}
           <HeroSection />
 
-          {/* Section 01.5: Quick Search Bar (Directly after Hero) */}
-          <HeroSearchBar />
+          {/* Section 01.5: Quick Search Bar (Desktop only here; on mobile it renders directly after the hero text fold) */}
+          <div className="hidden lg:block">
+            <HeroSearchBar />
+          </div>
 
           {/* Section 02: The Brand Statement & Act Moments */}
           <BrandStatement />
