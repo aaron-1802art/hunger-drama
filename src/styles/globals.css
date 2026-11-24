@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --hd-cream: #FFF1E1;
+    --hd-red: #FF382E;
+    --hd-pink: #FFB6C1;
+    --hd-yellow: #FFC342;
+    --hd-charcoal: #292525;
+    --hd-white: #FFFFFF;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+  }
+
+  html {
+    background-color: var(--hd-cream);
+    color: var(--hd-charcoal);
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+    max-width: 100vw;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: #FFF1E1;
+    color: #292525;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    max-width: 100vw;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #FFF1E1;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #292525;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #FF382E;
+  }
+
+  /* Selection */
+  ::selection {
+    background: #FF382E;
+    color: #FFF1E1;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Focus rings */
+  :focus-visible {
+    outline: 2px solid #FF382E;
+    outline-offset: 3px;
+  }
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-stroke-red {
+    -webkit-text-stroke: 1.5px #FF382E;
+    color: transparent;
+  }
+
+  .text-stroke-charcoal {
+    -webkit-text-stroke: 1.5px #292525;
+    color: transparent;
+  }
+
+  .text-stroke-cream {
+    -webkit-text-stroke: 1.5px #FFF1E1;
+    color: transparent;
+  }
+
+  .tap-transparent {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  .pt-safe {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
