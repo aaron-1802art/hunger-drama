@@ -66,8 +66,8 @@ export const InstagramSection: React.FC = () => {
           </a>
         </div>
 
-        {/* 4-Item Social Feed Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* 4-Item Social Feed Grid (2-cols on mobile to keep page compact) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
           {socialPosts.map((post, i) => (
             <motion.a
               key={post.id}
@@ -79,7 +79,7 @@ export const InstagramSection: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group relative bg-white border-2 border-[#292525] rounded-3xl overflow-hidden shadow-sm hover:shadow-drama-pop transition-all duration-300 flex flex-col justify-between cursor-pointer"
+              className="group relative bg-white border-2 border-[#292525] rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-drama-pop transition-all duration-300 flex flex-col justify-between cursor-pointer"
             >
               {/* Photo */}
               <div className="relative aspect-square w-full overflow-hidden bg-[#292525]">
@@ -88,30 +88,30 @@ export const InstagramSection: React.FC = () => {
                   alt={post.caption}
                   onError={(e) => {
                     e.currentTarget.src = BRAND_CONFIG.mascotImage
-                    e.currentTarget.className = 'w-full h-full object-contain p-8 bg-[#292525]'
+                    e.currentTarget.className = 'w-full h-full object-contain p-4 sm:p-8 bg-[#292525]'
                   }}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
-                <div className="absolute inset-0 bg-[#292525]/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-3 text-white p-4 text-center">
-                  <div className="flex items-center gap-4 font-mono text-xs font-bold">
-                    <span className="flex items-center gap-1.5"><Heart size={16} fill="white" /> {post.likes}</span>
-                    <span className="flex items-center gap-1.5"><MessageCircle size={16} fill="white" /> {post.comments}</span>
+                <div className="absolute inset-0 bg-[#292525]/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-2 sm:gap-3 text-white p-2 sm:p-4 text-center">
+                  <div className="flex items-center gap-2 sm:gap-4 font-mono text-[10px] sm:text-xs font-bold">
+                    <span className="flex items-center gap-1"><Heart size={14} className="sm:w-4 sm:h-4" fill="white" /> {post.likes}</span>
+                    <span className="flex items-center gap-1"><MessageCircle size={14} className="sm:w-4 sm:h-4" fill="white" /> {post.comments}</span>
                   </div>
-                  <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#FF382E] text-white font-mono text-[10px] font-bold uppercase tracking-wider">
-                    View on Instagram ↗
+                  <span className="inline-flex items-center gap-1 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#FF382E] text-white font-mono text-[9px] sm:text-[10px] font-bold uppercase tracking-wider">
+                    View ↗
                   </span>
                 </div>
               </div>
 
               {/* Caption */}
-              <div className="p-4 bg-white flex-1 flex flex-col justify-between">
-                <p className="font-body text-xs text-[#292525]/80 line-clamp-2 leading-relaxed mb-3">
+              <div className="p-2.5 sm:p-4 bg-white flex-1 flex flex-col justify-between">
+                <p className="font-body text-[11px] sm:text-xs text-[#292525]/80 line-clamp-2 leading-snug sm:leading-relaxed mb-2 sm:mb-3">
                   {post.caption}
                 </p>
-                <div className="flex items-center justify-between text-[11px] font-mono text-[#292525]/50 pt-2 border-t border-[#292525]/10">
+                <div className="flex items-center justify-between text-[10px] sm:text-[11px] font-mono text-[#292525]/50 pt-1.5 sm:pt-2 border-t border-[#292525]/10">
                   <span className="text-[#FF382E] font-bold">{BRAND_CONFIG.instagramHandle}</span>
-                  <span className="flex items-center gap-1 text-[#292525]/60 group-hover:text-[#FF382E] transition-colors">
-                    OPEN INSTAGRAM <ExternalLink size={11} />
+                  <span className="hidden xs:flex items-center gap-1 text-[#292525]/60 group-hover:text-[#FF382E] transition-colors">
+                    OPEN <ExternalLink size={10} />
                   </span>
                 </div>
               </div>

@@ -186,7 +186,7 @@ export const MenuSection: React.FC = () => {
             </button>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-6">
             <AnimatePresence>
               {filteredItems.map((item) => {
                 const isJustAdded = addedId === item.id
@@ -211,10 +211,10 @@ export const MenuSection: React.FC = () => {
                     data-dish-id={item.id}
                     data-dish-name={item.name}
                     data-dish-price={item.price}
-                    className="group bg-white border-2 border-[#292525] rounded-3xl overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-drama-pop transition-all duration-200 cursor-pointer"
+                    className="group bg-white border-2 border-[#292525] rounded-2xl sm:rounded-3xl overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-drama-pop transition-all duration-200 cursor-pointer"
                   >
                     {/* Item Image */}
-                    <div className="relative h-48 w-full overflow-hidden bg-[#292525]">
+                    <div className="relative h-32 sm:h-48 w-full overflow-hidden bg-[#292525]">
                       <img
                         src={item.image}
                         alt={item.name}
@@ -223,16 +223,16 @@ export const MenuSection: React.FC = () => {
                         height={192}
                         onError={(e) => {
                           e.currentTarget.src = BRAND_CONFIG.mascotImage
-                          e.currentTarget.className = 'w-full h-full object-contain p-8 bg-[#292525]'
+                          e.currentTarget.className = 'w-full h-full object-contain p-4 sm:p-8 bg-[#292525]'
                         }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
                       {/* Dietary Dot Badge */}
-                      <div className="absolute top-3 left-3">
+                      <div className="absolute top-2 left-2 sm:top-3 sm:left-3">
                         <span
-                          className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                          className={`inline-flex items-center gap-1 px-1.5 sm:px-2.5 py-0.5 rounded-full text-[9px] sm:text-[10px] font-bold uppercase tracking-wider ${
                             item.dietary === 'veg'
                               ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                               : 'bg-rose-100 text-rose-800 border border-rose-300'
@@ -243,55 +243,55 @@ export const MenuSection: React.FC = () => {
                               item.dietary === 'veg' ? 'bg-emerald-600' : 'bg-rose-600'
                             }`}
                           />
-                          {item.dietary === 'veg' ? 'VEG' : 'NON-VEG'}
+                          <span className="hidden xs:inline">{item.dietary === 'veg' ? 'VEG' : 'NON-VEG'}</span>
                         </span>
                       </div>
 
                       {/* Spice Indicator */}
                       {item.spiceLevel === 'spicy' && (
-                        <div className="absolute top-3 right-3 bg-[#FF382E] text-white p-1 rounded-lg shadow">
-                          <Flame size={14} />
+                        <div className="absolute top-2 right-2 sm:top-3 sm:right-3 bg-[#FF382E] text-white p-0.5 sm:p-1 rounded-md sm:rounded-lg shadow">
+                          <Flame size={12} className="sm:w-3.5 sm:h-3.5" />
                         </div>
                       )}
 
                       {/* Price Pill */}
-                      <div className="absolute bottom-3 right-3 px-3 py-1 rounded-xl bg-[#292525]/90 backdrop-blur text-white font-display text-base font-bold shadow-md">
+                      <div className="absolute bottom-2 right-2 sm:bottom-3 sm:right-3 px-2 sm:px-3 py-0.5 sm:py-1 rounded-lg sm:rounded-xl bg-[#292525]/90 backdrop-blur text-white font-display text-xs sm:text-base font-bold shadow-md">
                         {BRAND_CONFIG.currencySymbol}{item.price}
                       </div>
                     </div>
 
                     {/* Card Content */}
-                    <div className="p-5 flex-1 flex flex-col justify-between">
+                    <div className="p-3 sm:p-5 flex-1 flex flex-col justify-between">
                       <div>
-                        <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF382E] block mb-1">
+                        <span className="text-[9px] sm:text-[10px] font-mono font-bold uppercase tracking-wider text-[#FF382E] block mb-0.5 sm:mb-1">
                           {item.category}
                         </span>
-                        <h4 className="font-display text-lg font-bold text-[#292525] group-hover:text-[#FF382E] transition-colors line-clamp-1 mb-1.5">
+                        <h4 className="font-display text-sm sm:text-lg font-bold text-[#292525] group-hover:text-[#FF382E] transition-colors line-clamp-1 mb-1">
                           {item.name}
                         </h4>
-                        <p className="font-body text-xs text-[#292525]/80 line-clamp-2 leading-relaxed mb-4">
+                        <p className="font-body text-[11px] sm:text-xs text-[#292525]/80 line-clamp-2 leading-snug sm:leading-relaxed mb-2.5 sm:mb-4">
                           {item.description}
                         </p>
                       </div>
 
                       {/* Card Bottom CTA */}
-                      <div className="pt-3 border-t border-[#292525]/10 flex items-center justify-between gap-2">
+                      <div className="pt-2 sm:pt-3 border-t border-[#292525]/10 flex items-center justify-between gap-1.5 sm:gap-2">
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation()
                             orderItemDirectly(item)
                           }}
-                          className="p-2 rounded-xl text-[#292525] hover:bg-[#FFF1E1] transition-colors"
+                          className="p-1.5 sm:p-2 rounded-lg sm:rounded-xl text-[#292525] hover:bg-[#FFF1E1] transition-colors"
                           title="Direct WhatsApp Order"
                         >
-                          <MessageCircle size={17} />
+                          <MessageCircle size={15} className="sm:w-[17px] sm:h-[17px]" />
                         </button>
 
                         <button
                           type="button"
                           onClick={(e) => handleQuickAdd(item, e)}
-                          className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl font-display text-xs tracking-wider uppercase transition-all shadow-sm ${
+                          className={`flex-1 sm:flex-initial flex items-center justify-center gap-1 sm:gap-1.5 px-2.5 sm:px-3.5 py-1.5 sm:py-2 rounded-lg sm:rounded-xl font-display text-[11px] sm:text-xs tracking-wider uppercase transition-all shadow-sm ${
                             isJustAdded
                               ? 'bg-emerald-600 text-white'
                               : 'bg-[#292525] text-white hover:bg-[#FF382E]'
@@ -299,11 +299,11 @@ export const MenuSection: React.FC = () => {
                         >
                           {isJustAdded ? (
                             <>
-                              <Check size={14} /> ADDED
+                              <Check size={12} className="sm:w-3.5 sm:h-3.5" /> <span className="hidden xs:inline">ADDED</span>
                             </>
                           ) : (
                             <>
-                              <Plus size={14} /> ADD {BRAND_CONFIG.currencySymbol}{item.price}
+                              <Plus size={12} className="sm:w-3.5 sm:h-3.5" /> <span>ADD</span>
                             </>
                           )}
                         </button>
