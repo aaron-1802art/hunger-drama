@@ -8,6 +8,7 @@ import { ClapperboardIntro } from '@/components/hunger-drama/ClapperboardIntro'
 import { ScrollStoryIndicator } from '@/components/hunger-drama/ScrollStoryIndicator'
 import { SoundProvider } from '@/context/SoundContext'
 import { HeroSection } from '@/components/hunger-drama/sections/HeroSection'
+import { HeroSearchBar } from '@/components/hunger-drama/sections/HeroSearchBar'
 import { BrandStatement } from '@/components/hunger-drama/sections/BrandStatement'
 import { FeaturedFood } from '@/components/hunger-drama/sections/FeaturedFood'
 import { BuildYourDrama } from '@/components/hunger-drama/sections/BuildYourDrama'
@@ -57,6 +58,9 @@ export const HungerDramaHome: React.FC = () => {
         <main id="main-content" className="flex-1 pb-24 md:pb-0">
           {/* Section 01: The Opening Experience */}
           <HeroSection />
+
+          {/* Section 01.5: Quick Search Bar (Directly after Hero) */}
+          <HeroSearchBar />
 
           {/* Section 02: The Brand Statement & Act Moments */}
           <BrandStatement />
